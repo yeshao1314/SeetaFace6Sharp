@@ -561,7 +561,7 @@ namespace SeetaFace6Sharp.Example.VideoForm
         {
             FaceRecognizerDemo();
         }
-        private readonly static string targetPic = @"image.jpg";
+        private static string targetPic = @"image.jpg";
         public void FaceRecognizerDemo()
         {
             Stopwatch sw = Stopwatch.StartNew();
