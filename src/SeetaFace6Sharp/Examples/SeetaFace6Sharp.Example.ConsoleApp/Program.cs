@@ -15,42 +15,42 @@ namespace SeetaFace6Sharp.Example.ConsoleApp
 
         static void Main(string[] args)
         {
-            GlobalConfig.SetLog(msg =>
-            {
-                Console.WriteLine(msg);
-            });
+            //GlobalConfig.SetLog(msg =>
+            //{
+            //    Console.WriteLine(msg);
+            //});
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
             //人脸识别Demo
-            FaceDetectorDemo();
+            //FaceDetectorDemo();
 
             //关键点标记
-            FaceMarkDemo();
+            //FaceMarkDemo();
 
             //戴口罩识别Demo
-            MaskDetectorDemo();
+            //MaskDetectorDemo();
 
             //质量检测Demo
-            FaceQualityDemo();
+            //FaceQualityDemo();
 
             //活体检测Demo
-            AntiSpoofingDemo();
+            //AntiSpoofingDemo();
 
             //人脸对比（提取并对比特征值）
             FaceRecognizerDemo();
 
             //人脸追踪
-            FaceTrackDemo();
+            //FaceTrackDemo();
 
             //年龄预测
-            FaceAgePredictorDemo();
+            //FaceAgePredictorDemo();
 
             //性别预测
-            FaceGenderPredictorDemo();
+            //FaceGenderPredictorDemo();
 
             //眼睛状态检测
-            FaceEyeStateDetectorDemo();
+            //FaceEyeStateDetectorDemo();
 
             Console.ReadKey();
         }
@@ -185,22 +185,28 @@ namespace SeetaFace6Sharp.Example.ConsoleApp
         {
             Stopwatch sw = Stopwatch.StartNew();
 
-            using var faceImage0 = SKBitmap.Decode(imagePath0).ToFaceImage();
-            using var faceImage1 = SKBitmap.Decode(imagePath1).ToFaceImage();
+            var faceImage0 = SKBitmap.Decode(imagePath0).ToFaceImage();//width:894    height:840
+            var faceImage1 = SKBitmap.Decode(maskImagePath).ToFaceImage();//width:552    height:333
             //检测人脸信息
-            using FaceDetector faceDetector = new FaceDetector();
+            FaceDetector faceDetector = new FaceDetector();
             FaceInfo[] infos0 = faceDetector.Detect(faceImage0);
             FaceInfo[] infos1 = faceDetector.Detect(faceImage1);
             //标记人脸位置
-            using FaceLandmarker faceMark = new FaceLandmarker();
+            FaceLandmarker faceMark = new FaceLandmarker();
             FaceMarkPoint[] points0 = faceMark.Mark(faceImage0, infos0[0]);
             FaceMarkPoint[] points1 = faceMark.Mark(faceImage1, infos1[0]);
             //提取特征值
-            using FaceRecognizer faceRecognizer = new FaceRecognizer();
+            FaceRecognizer faceRecognizer = new FaceRecognizer();
             float[] data0 = faceRecognizer.Extract(faceImage0, points0);
             float[] data1 = faceRecognizer.Extract(faceImage1, points1);
             //对比特征值
             bool isSelf = faceRecognizer.IsSelf(data0, data1);
+
+            faceRecognizer.Dispose();
+            faceMark.Dispose();
+            faceDetector.Dispose();
+            faceImage1.Dispose();
+            faceImage0.Dispose();
 
             Console.WriteLine($"识别到的人脸是否为同一人：{isSelf}，对比耗时：{sw.ElapsedMilliseconds}ms");
             Console.WriteLine();

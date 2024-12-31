@@ -556,5 +556,49 @@ namespace SeetaFace6Sharp.Example.VideoForm
         }
 
         #endregion
+
+        private void btnFaceRecognizer_Click(object sender, EventArgs e)
+        {
+            FaceRecognizerDemo();
+        }
+        private readonly static string targetPic = @"image.jpg";
+        public void FaceRecognizerDemo()
+        {
+            Stopwatch sw = Stopwatch.StartNew();
+
+            Bitmap targetImg = new Bitmap(targetPic);//目标源
+            Bitmap sourceImg = VideoPlayer.GetCurrentVideoFrame();
+
+            FaceImage faceImage0 = targetImg.ToFaceImage();//width:894    height:840
+            FaceImage faceImage1 = sourceImg.ToFaceImage();//width:552    height:333
+            //检测人脸信息
+            FaceDetector faceDetector = new FaceDetector();
+            FaceInfo[] infos0 = faceDetector.Detect(faceImage0);
+            FaceInfo[] infos1 = faceDetector.Detect(faceImage1);
+            //标记人脸位置
+            FaceLandmarker faceMark = new FaceLandmarker();
+            FaceMarkPoint[] points0 = faceMark.Mark(faceImage0, infos0[0]);
+            FaceMarkPoint[] points1 = faceMark.Mark(faceImage1, infos1[0]);
+            //提取特征值
+            FaceRecognizer faceRecognizer = new FaceRecognizer();
+            float[] data0 = faceRecognizer.Extract(faceImage0, points0);
+            float[] data1 = faceRecognizer.Extract(faceImage1, points1);
+            //对比特征值
+            bool isSelf = faceRecognizer.IsSelf(data0, data1);
+
+            faceRecognizer.Dispose();
+            faceMark.Dispose();
+            faceDetector.Dispose();
+            faceImage1.Dispose();
+            faceImage0.Dispose();
+
+            MessageBox.Show($"识别到的人脸是否为同一人：{isSelf}，对比耗时：{sw.ElapsedMilliseconds}ms");
+            sw.Stop();
+        }
+
+        private void VideoPlayer_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

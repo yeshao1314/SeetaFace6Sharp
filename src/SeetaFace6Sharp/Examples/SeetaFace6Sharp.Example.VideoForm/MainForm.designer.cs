@@ -52,6 +52,7 @@
             this.ButtonSave = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.FacePictureBox = new System.Windows.Forms.PictureBox();
+            this.btnFaceRecognizer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFPSTime)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -62,10 +63,9 @@
             // ButtonStart
             // 
             this.ButtonStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonStart.Location = new System.Drawing.Point(725, 32);
-            this.ButtonStart.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonStart.Location = new System.Drawing.Point(1088, 48);
             this.ButtonStart.Name = "ButtonStart";
-            this.ButtonStart.Size = new System.Drawing.Size(109, 49);
+            this.ButtonStart.Size = new System.Drawing.Size(164, 74);
             this.ButtonStart.TabIndex = 1;
             this.ButtonStart.Text = "打开摄像头并识别人脸";
             this.ButtonStart.UseVisualStyleBackColor = true;
@@ -76,30 +76,29 @@
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(725, 85);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox1.Location = new System.Drawing.Point(1088, 128);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(109, 20);
+            this.comboBox1.Size = new System.Drawing.Size(162, 26);
             this.comboBox1.TabIndex = 2;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // VideoPlayer
             // 
-            this.VideoPlayer.Location = new System.Drawing.Point(20, 44);
-            this.VideoPlayer.Margin = new System.Windows.Forms.Padding(2);
+            this.VideoPlayer.BackColor = System.Drawing.SystemColors.Highlight;
+            this.VideoPlayer.Location = new System.Drawing.Point(30, 66);
             this.VideoPlayer.Name = "VideoPlayer";
-            this.VideoPlayer.Size = new System.Drawing.Size(181, 134);
+            this.VideoPlayer.Size = new System.Drawing.Size(272, 201);
             this.VideoPlayer.TabIndex = 5;
             this.VideoPlayer.Text = "videoSourcePlayer1";
             this.VideoPlayer.VideoSource = null;
+            this.VideoPlayer.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.VideoPlayer_MouseDoubleClick);
             // 
             // CheckBoxFaceProperty
             // 
             this.CheckBoxFaceProperty.AutoSize = true;
-            this.CheckBoxFaceProperty.Location = new System.Drawing.Point(9, 36);
-            this.CheckBoxFaceProperty.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBoxFaceProperty.Location = new System.Drawing.Point(14, 54);
             this.CheckBoxFaceProperty.Name = "CheckBoxFaceProperty";
-            this.CheckBoxFaceProperty.Size = new System.Drawing.Size(72, 16);
+            this.CheckBoxFaceProperty.Size = new System.Drawing.Size(106, 22);
             this.CheckBoxFaceProperty.TabIndex = 6;
             this.CheckBoxFaceProperty.Text = "属性检测";
             this.toolTip1.SetToolTip(this.CheckBoxFaceProperty, "启用检测人脸属性后，图片的刷新率可能会显著下降");
@@ -108,10 +107,9 @@
             // CheckBoxFaceMask
             // 
             this.CheckBoxFaceMask.AutoSize = true;
-            this.CheckBoxFaceMask.Location = new System.Drawing.Point(9, 56);
-            this.CheckBoxFaceMask.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBoxFaceMask.Location = new System.Drawing.Point(14, 84);
             this.CheckBoxFaceMask.Name = "CheckBoxFaceMask";
-            this.CheckBoxFaceMask.Size = new System.Drawing.Size(72, 16);
+            this.CheckBoxFaceMask.Size = new System.Drawing.Size(106, 22);
             this.CheckBoxFaceMask.TabIndex = 12;
             this.CheckBoxFaceMask.Text = "口罩检测";
             this.toolTip1.SetToolTip(this.CheckBoxFaceMask, "启用检测人脸属性后，图片的刷新率可能会显著下降");
@@ -122,10 +120,9 @@
             this.CheckBoxFPS.AutoSize = true;
             this.CheckBoxFPS.Checked = true;
             this.CheckBoxFPS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxFPS.Location = new System.Drawing.Point(9, 76);
-            this.CheckBoxFPS.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBoxFPS.Location = new System.Drawing.Point(14, 114);
             this.CheckBoxFPS.Name = "CheckBoxFPS";
-            this.CheckBoxFPS.Size = new System.Drawing.Size(72, 16);
+            this.CheckBoxFPS.Size = new System.Drawing.Size(106, 22);
             this.CheckBoxFPS.TabIndex = 7;
             this.CheckBoxFPS.Text = "计算 FPS";
             this.CheckBoxFPS.UseVisualStyleBackColor = true;
@@ -135,10 +132,9 @@
             this.CheckBoxDetect.AutoSize = true;
             this.CheckBoxDetect.Checked = true;
             this.CheckBoxDetect.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxDetect.Location = new System.Drawing.Point(9, 16);
-            this.CheckBoxDetect.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBoxDetect.Location = new System.Drawing.Point(14, 24);
             this.CheckBoxDetect.Name = "CheckBoxDetect";
-            this.CheckBoxDetect.Size = new System.Drawing.Size(72, 16);
+            this.CheckBoxDetect.Size = new System.Drawing.Size(106, 22);
             this.CheckBoxDetect.TabIndex = 8;
             this.CheckBoxDetect.Text = "人脸检测";
             this.CheckBoxDetect.UseVisualStyleBackColor = true;
@@ -153,15 +149,14 @@
             0,
             0,
             0});
-            this.numericUpDownFPSTime.Location = new System.Drawing.Point(4, 31);
-            this.numericUpDownFPSTime.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownFPSTime.Location = new System.Drawing.Point(6, 46);
             this.numericUpDownFPSTime.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numericUpDownFPSTime.Name = "numericUpDownFPSTime";
-            this.numericUpDownFPSTime.Size = new System.Drawing.Size(92, 21);
+            this.numericUpDownFPSTime.Size = new System.Drawing.Size(138, 28);
             this.numericUpDownFPSTime.TabIndex = 9;
             this.numericUpDownFPSTime.Value = new decimal(new int[] {
             500,
@@ -172,11 +167,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.numericUpDownFPSTime);
-            this.groupBox1.Location = new System.Drawing.Point(4, 98);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(6, 147);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(101, 56);
+            this.groupBox1.Size = new System.Drawing.Size(152, 84);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "FPS 刷新时间 (单位:毫秒)";
@@ -189,21 +182,25 @@
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.CheckBoxFPS);
             this.groupBox2.Controls.Add(this.CheckBoxDetect);
-            this.groupBox2.Location = new System.Drawing.Point(725, 134);
+            this.groupBox2.Location = new System.Drawing.Point(1088, 201);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(109, 160);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(164, 240);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton3,
             this.toolStripDropDownButton1,
             this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(845, 25);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1268, 33);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -216,27 +213,27 @@
             this.toolStripDropDownButton3.Image = global::SeetaFace6Sharp.Example.VideoForm.Properties.Resources.选项;
             this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
-            this.toolStripDropDownButton3.Size = new System.Drawing.Size(62, 22);
+            this.toolStripDropDownButton3.Size = new System.Drawing.Size(88, 28);
             this.toolStripDropDownButton3.Text = "操作";
             // 
             // 检测摄像头ToolStripMenuItem
             // 
             this.检测摄像头ToolStripMenuItem.Name = "检测摄像头ToolStripMenuItem";
-            this.检测摄像头ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.检测摄像头ToolStripMenuItem.Size = new System.Drawing.Size(218, 34);
             this.检测摄像头ToolStripMenuItem.Text = "检测摄像头";
             this.检测摄像头ToolStripMenuItem.Click += new System.EventHandler(this.检测摄像头ToolStripMenuItem_Click);
             // 
             // 强制刷新缓存ToolStripMenuItem
             // 
             this.强制刷新缓存ToolStripMenuItem.Name = "强制刷新缓存ToolStripMenuItem";
-            this.强制刷新缓存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.强制刷新缓存ToolStripMenuItem.Size = new System.Drawing.Size(218, 34);
             this.强制刷新缓存ToolStripMenuItem.Text = "强制刷新缓存";
             this.强制刷新缓存ToolStripMenuItem.Click += new System.EventHandler(this.强制刷新缓存ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(218, 34);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -247,13 +244,13 @@
             this.toolStripDropDownButton1.Image = global::SeetaFace6Sharp.Example.VideoForm.Properties.Resources.manage;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(62, 22);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(88, 28);
             this.toolStripDropDownButton1.Text = "管理";
             // 
             // 人员管理ToolStripMenuItem
             // 
             this.人员管理ToolStripMenuItem.Name = "人员管理ToolStripMenuItem";
-            this.人员管理ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.人员管理ToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
             this.人员管理ToolStripMenuItem.Text = "人员管理";
             this.人员管理ToolStripMenuItem.Click += new System.EventHandler(this.人员管理ToolStripMenuItem_Click);
             // 
@@ -264,23 +261,22 @@
             this.toolStripDropDownButton2.Image = global::SeetaFace6Sharp.Example.VideoForm.Properties.Resources.about;
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(62, 22);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(88, 28);
             this.toolStripDropDownButton2.Text = "关于";
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(146, 34);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
             // ButtonSave
             // 
             this.ButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonSave.Location = new System.Drawing.Point(725, 401);
-            this.ButtonSave.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonSave.Location = new System.Drawing.Point(1088, 602);
             this.ButtonSave.Name = "ButtonSave";
-            this.ButtonSave.Size = new System.Drawing.Size(109, 49);
+            this.ButtonSave.Size = new System.Drawing.Size(164, 74);
             this.ButtonSave.TabIndex = 14;
             this.ButtonSave.Text = "录入人脸信息";
             this.ButtonSave.UseVisualStyleBackColor = true;
@@ -291,10 +287,9 @@
             this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(725, 112);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox2.Location = new System.Drawing.Point(1088, 168);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(109, 20);
+            this.comboBox2.Size = new System.Drawing.Size(162, 26);
             this.comboBox2.TabIndex = 15;
             // 
             // FacePictureBox
@@ -302,20 +297,32 @@
             this.FacePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.FacePictureBox.BackColor = System.Drawing.Color.IndianRed;
             this.FacePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FacePictureBox.Location = new System.Drawing.Point(5, 32);
-            this.FacePictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.FacePictureBox.Location = new System.Drawing.Point(8, 48);
             this.FacePictureBox.Name = "FacePictureBox";
-            this.FacePictureBox.Size = new System.Drawing.Size(711, 418);
+            this.FacePictureBox.Size = new System.Drawing.Size(1066, 626);
             this.FacePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.FacePictureBox.TabIndex = 4;
             this.FacePictureBox.TabStop = false;
             // 
+            // btnFaceRecognizer
+            // 
+            this.btnFaceRecognizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFaceRecognizer.Location = new System.Drawing.Point(1088, 448);
+            this.btnFaceRecognizer.Name = "btnFaceRecognizer";
+            this.btnFaceRecognizer.Size = new System.Drawing.Size(164, 58);
+            this.btnFaceRecognizer.TabIndex = 16;
+            this.btnFaceRecognizer.Text = "人脸对比";
+            this.btnFaceRecognizer.UseVisualStyleBackColor = true;
+            this.btnFaceRecognizer.Click += new System.EventHandler(this.btnFaceRecognizer_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 453);
+            this.ClientSize = new System.Drawing.Size(1268, 680);
+            this.Controls.Add(this.btnFaceRecognizer);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.toolStrip1);
@@ -324,8 +331,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.ButtonStart);
             this.Controls.Add(this.FacePictureBox);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(300, 320);
+            this.MinimumSize = new System.Drawing.Size(439, 452);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
@@ -366,6 +372,7 @@
         private System.Windows.Forms.ToolStripMenuItem 检测摄像头ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 强制刷新缓存ToolStripMenuItem;
+        private System.Windows.Forms.Button btnFaceRecognizer;
     }
 }
 
