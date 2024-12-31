@@ -256,6 +256,12 @@
     <Compile Include="Extensions\BitmapExtension.cs" />
     <Compile Include="Extensions\DataGridViewExtension.cs" />
     <Compile Include="Extensions\MemberInfoExtension.cs" />
+    <Compile Include="MainForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm2.designer.cs">
+      <DependentUpon>MainForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\CameraSettings.cs" />
     <Compile Include="UserInfoForm.cs">
       <SubType>Form</SubType>
@@ -285,6 +291,9 @@
     <Compile Include="Utils\EnumUtil.cs" />
     <Compile Include="Utils\FormHelper.cs" />
     <Compile Include="SeetaFace6SharpFactory.cs" />
+    <EmbeddedResource Include="MainForm2.resx">
+      <DependentUpon>MainForm2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
